@@ -502,6 +502,22 @@
           <li><a href="#재능-게시물-삭제_response_fields">Response fields</a></li>
         </ul>
       </li>
+      <li><a href="#재능-게시물-좋아요-생성">재능 게시물 좋아요 생성</a>
+        <ul class="sectlevel2">
+          <li><a href="#재능-게시물-좋아요-생성_path_parameters">Path parameters</a></li>
+          <li><a href="#재능-게시물-좋아요-생성_http_request">HTTP request</a></li>
+          <li><a href="#재능-게시물-좋아요-생성_http_response">HTTP response</a></li>
+          <li><a href="#재능-게시물-좋아요-생성_response_fields">Response fields</a></li>
+        </ul>
+      </li>
+      <li><a href="#재능-게시물-좋아요-취소">재능 게시물 좋아요 취소</a>
+        <ul class="sectlevel2">
+          <li><a href="#재능-게시물-좋아요-취소_path_parameters">Path parameters</a></li>
+          <li><a href="#재능-게시물-좋아요-취소_http_request">HTTP request</a></li>
+          <li><a href="#재능-게시물-좋아요-취소_http_response">HTTP response</a></li>
+          <li><a href="#재능-게시물-좋아요-취소_response_fields">Response fields</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
@@ -1226,7 +1242,7 @@ Host: localhost:8080</code></pre>
           <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 879
+Content-Length: 1000
 
 {
   "message" : "success",
@@ -1254,7 +1270,8 @@ Content-Length: 879
     "nickname" : "말하는 감자",
     "image" : "https://dpm-pingpong-bucket.s3.ap-northeast-2.amazonaws.com/profileImage/3d4395e461db40108104200e286870c4-kirby.png",
     "ranks" : "비기너",
-    "isLike" : false
+    "isLike" : false,
+    "backgroundImage" : "https://dpm-pingpong-bucket.s3.ap-northeast-2.amazonaws.com/category/main/mainCategory-1.png"
   }
 }</code></pre>
           </div>
@@ -1425,6 +1442,13 @@ Content-Length: 879
             <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
             <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
             <td class="tableblock halign-left valign-top"><p class="tableblock">좋아요 수</p></td>
+            <td class="tableblock halign-left valign-top"></td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">data.backgroundImage</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">배경 이미지 url</p></td>
             <td class="tableblock halign-left valign-top"></td>
           </tr>
           </tbody>
@@ -2105,11 +2129,195 @@ Content-Length: 44
       </div>
     </div>
   </div>
+  <div class="sect1">
+    <h2 id="재능-게시물-좋아요-생성"><a class="link" href="#재능-게시물-좋아요-생성">재능 게시물 좋아요 생성</a></h2>
+    <div class="sectionbody">
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-생성_path_parameters"><a class="link" href="#재능-게시물-좋아요-생성_path_parameters">Path parameters</a></h3>
+        <table class="tableblock frame-all grid-all stretch">
+          <caption class="title">Table 1. /api/v1/posts/{postId}/likes</caption>
+          <colgroup>
+            <col style="width: 50%;">
+            <col style="width: 50%;">
+          </colgroup>
+          <thead>
+          <tr>
+            <th class="tableblock halign-left valign-top">Parameter</th>
+            <th class="tableblock halign-left valign-top">Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock"><code>postId</code></p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">좋아요 수를 증가할 게시물 id</p></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-생성_http_request"><a class="link" href="#재능-게시물-좋아요-생성_http_request">HTTP request</a></h3>
+        <div class="listingblock">
+          <div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/posts/1/likes HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Host: localhost:8080</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-생성_http_response"><a class="link" href="#재능-게시물-좋아요-생성_http_response">HTTP response</a></h3>
+        <div class="listingblock">
+          <div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 66
+
+{
+  "message" : "success",
+  "data" : {
+    "likes" : 5
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-생성_response_fields"><a class="link" href="#재능-게시물-좋아요-생성_response_fields">Response fields</a></h3>
+        <table class="tableblock frame-all grid-all stretch">
+          <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+          </colgroup>
+          <thead>
+          <tr>
+            <th class="tableblock halign-left valign-top">필드</th>
+            <th class="tableblock halign-left valign-top">타입</th>
+            <th class="tableblock halign-left valign-top">필수값</th>
+            <th class="tableblock halign-left valign-top">설명</th>
+            <th class="tableblock halign-left valign-top">제한</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">성공 여부</p></td>
+            <td class="tableblock halign-left valign-top"></td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">data.likes</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">해당 게시물의 좋아요 수</p></td>
+            <td class="tableblock halign-left valign-top"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="sect1">
+    <h2 id="재능-게시물-좋아요-취소"><a class="link" href="#재능-게시물-좋아요-취소">재능 게시물 좋아요 취소</a></h2>
+    <div class="sectionbody">
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-취소_path_parameters"><a class="link" href="#재능-게시물-좋아요-취소_path_parameters">Path parameters</a></h3>
+        <table class="tableblock frame-all grid-all stretch">
+          <caption class="title">Table 1. /api/v1/posts/{postId}/unlikes</caption>
+          <colgroup>
+            <col style="width: 50%;">
+            <col style="width: 50%;">
+          </colgroup>
+          <thead>
+          <tr>
+            <th class="tableblock halign-left valign-top">Parameter</th>
+            <th class="tableblock halign-left valign-top">Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock"><code>postId</code></p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">좋아요를 취소할 게시물 id</p></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-취소_http_request"><a class="link" href="#재능-게시물-좋아요-취소_http_request">HTTP request</a></h3>
+        <div class="listingblock">
+          <div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/posts/1/unlikes HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Host: localhost:8080</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-취소_http_response"><a class="link" href="#재능-게시물-좋아요-취소_http_response">HTTP response</a></h3>
+        <div class="listingblock">
+          <div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length: 66
+
+{
+  "message" : "success",
+  "data" : {
+    "likes" : 5
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="sect2">
+        <h3 id="재능-게시물-좋아요-취소_response_fields"><a class="link" href="#재능-게시물-좋아요-취소_response_fields">Response fields</a></h3>
+        <table class="tableblock frame-all grid-all stretch">
+          <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+          </colgroup>
+          <thead>
+          <tr>
+            <th class="tableblock halign-left valign-top">필드</th>
+            <th class="tableblock halign-left valign-top">타입</th>
+            <th class="tableblock halign-left valign-top">필수값</th>
+            <th class="tableblock halign-left valign-top">설명</th>
+            <th class="tableblock halign-left valign-top">제한</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">성공 여부</p></td>
+            <td class="tableblock halign-left valign-top"></td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">data.likes</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+            <td class="tableblock halign-left valign-top"><p class="tableblock">해당 게시물의 좋아요 수</p></td>
+            <td class="tableblock halign-left valign-top"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <div id="footer">
   <div id="footer-text">
     Version 0.0.1-SNAPSHOT<br>
-    Last updated 2022-12-22 18:24:18 +0900
+    Last updated 2023-01-02 09:07:41 +0900
   </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
